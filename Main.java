@@ -1,48 +1,40 @@
+package collegedsa;
+
 import java.util.Scanner;
-//class airht{
-//
-//    airht(){
-//        System.out.println("constructor of airht class non parameterised con.");
-//    }
-//    int add(int a,int b){
-//        int ans= a+b;
-//        return ans;
-//    }
-//}
-//public class Main {
-//    public static void main(String[] args) {
-//        airht scc =new airht();
-//        Scanner sc = new Scanner(System.in);
-//        int x= sc.nextInt();
-//        int y= sc.nextInt();
-//        int ans = scc.add(x,y);
-//        System.out.println(ans);
-//
-//    }
-//}
 
-class airht{
-    int a;
-    int b;
-
-    airht(int x, int y){
-        System.out.println("constructor of airht class ");
-        a=x;
-        b=y;
-    }
-    int add(){
-        int ans= a+b;
-        return ans;
-    }
-}
 public class Main {
-    public static void main(String[] args) {
-        airht scc =new airht(5,7);
-        Scanner sc = new Scanner(System.in);
-//        int x= sc.nextInt();
-//        int y= sc.nextInt();
-        int ans = scc.add();
-        System.out.println(ans);
 
+    // Function to replace all occurrences of '0' with '5' using recursion
+    public static int replaceZerosWithFives(int N) {
+        // Base case: if the number becomes zero, return 0
+        if (N == 0) {
+            return 0;
+        }
+
+        // Extract the last digit of the number
+        int lastDigit = N % 10;
+
+        // Recursively call the function for the remaining number
+        int remainingNumber = replaceZerosWithFives(N / 10);
+
+        // If the last digit is 0, replace it with 5, otherwise keep it as it is
+        if (lastDigit == 0) {
+            return remainingNumber * 10 + 5;
+        } else {
+            return remainingNumber * 10 + lastDigit;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input integer N
+        int N = scanner.nextInt();
+
+        // Output the result
+        System.out.println(replaceZerosWithFives(N));
+
+        scanner.close();
     }
 }
+
